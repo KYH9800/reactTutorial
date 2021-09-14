@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <title>index</title>
+  </head>
+
+  <body>
+    <!--root에 react를 넣을거에요-->
+    <div id="root"></div>
+    <!--결과: <div id="root"><button>Like</button></div> -->
+    <script>
+      const e = React.createElement;
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return e("button", null, "Like"); // <button> Like </button> '이런 태그를 만들겠다(만든다가 아님)'
+        }
+      }
+    </script>
+    <script>
+      ReactDOM.render(e(LikeButton), document.querySelector("#root"));
+    </script>
+  </body>
+</html>
+
+<!-- { onClick: () => this.setState({ liked: true }) } -->
+<!--Web 보다는 App의 형식과 비슷하다고 보면 된다-->
