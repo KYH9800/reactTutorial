@@ -17,17 +17,31 @@
   <body>
     <!--root에 react를 넣을거에요-->
     <div id="root"></div>
-    <!--결과: <div id="root"><button>Like</button></div> -->
+    <!--결과: <div id="root"><button onclick="onclick">Like</button></div> -->
     <script>
       const e = React.createElement;
 
       class LikeButton extends React.Component {
         constructor(props) {
           super(props);
+          this.state = {
+            liked: false,
+          };
         }
 
         render() {
-          return e("button", null, "Like"); // <button> Like </button> '이런 태그를 만들겠다(만든다가 아님)'
+          return e(
+            "button",
+            {
+              onClick: () => {
+                this.setState({ licked: true });
+                // console.log(this.state.licked);
+              },
+              type: "submit",
+            },
+            this.state.licked === true ? "Liked" : "Like"
+          ); // <button> Like </button> '이런 태그를 만들겠다(만든다가 아님)'
+          // <div id="root"><button onclick="() => { console.log("clicked"); }" type="submit">Like</button></div>
         }
       }
     </script>
@@ -39,3 +53,4 @@
 
 <!-- { onClick: () => this.setState({ liked: true }) } -->
 <!--Web 보다는 App의 형식과 비슷하다고 보면 된다-->
+<!--! SPA 그리고 SSR과 CSR: https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR -->
