@@ -6,7 +6,7 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <title>구구단</title>
+    <title>구구단 Hooks</title>
   </head>
 
   <body>
@@ -14,10 +14,48 @@
     <script type="text/babel">
       // hook는 함수형 컴포넌트에서 state랑 ref를 쓸 수 있게 해준것
       const GuGuDan = () => {
+        // Hooks에서 state를 선언하는 방법 (구조 분해 할당)
         const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
         const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+        const [value, setValue] = React.useState("");
+        const [result, setResult] = React.useState("");
+        const inputRef = React.useRef(null);
 
-        return <div>hello, hooks</div>;
+        const onSubmitForm = (e) => {
+          e.preventDefault();
+          if (parseInt(value) === first * second) {
+            // setCount((c) => { return c + 1 }); 예전값을 이용할 시 state 비동기 문제 해결 가능
+            setResult((prevResult) => {
+              return `${first} X ${second} = ${value} 정답!`;
+            });
+            setFirst(Math.ceil(Math.random() * 9));
+            setSecond(Math.ceil(Math.random() * 9));
+            setValue("");
+            inputRef.current.focus();
+          } else {
+            setResult(`${first} X ${second} = ${value} 틀렸습니다!`);
+            setValue("");
+            inputRef.current.focus();
+          }
+        };
+
+        const onChangeInput = (e) => {
+          setValue(e.target.value);
+        };
+
+        console.log("렌더링");
+        return (
+          <React.Fragment>
+            <div>
+              {first} X {second} = ?
+            </div>
+            <form onSubmit={onSubmitForm}>
+              <input ref={inputRef} value={value} onChange={onChangeInput} type="number" />
+              <button>입력</button>
+            </form>
+            <div id="result">{result}</div>
+          </React.Fragment>
+        );
       };
     </script>
     <script type="text/babel">
