@@ -3,14 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script
-      src="https://unpkg.com/react@17/umd/react.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-      crossorigin
-    ></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <title>구구단</title>
   </head>
@@ -34,10 +28,7 @@
         onSubmit = (e) => {
           e.preventDefault();
           console.log(this.state.value);
-          if (
-            parseInt(this.state.value) ===
-            this.state.first * this.state.second
-          ) {
+          if (parseInt(this.state.value) === this.state.first * this.state.second) {
             this.setState((prevState) => {
               // prevState === this.state
               return {
@@ -77,12 +68,7 @@
                 {this.state.first} X {this.state.second} = ?
               </div>
               <form onSubmit={this.onSubmit}>
-                <input
-                  ref={this.onRefInput}
-                  type="number"
-                  value={this.state.value}
-                  onChange={this.onChange}
-                />
+                <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange} />
                 <button>입력</button>
               </form>
               <div>{this.state.result}</div>
