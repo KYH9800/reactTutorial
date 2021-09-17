@@ -11,6 +11,7 @@
       src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
       crossorigin
     ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <title>index</title>
   </head>
 
@@ -18,9 +19,7 @@
     <!--root에 react를 넣을거에요-->
     <div id="root"></div>
     <!--결과: <div id="root"><button onclick="onclick">Like</button></div> -->
-    <script>
-      const e = React.createElement;
-
+    <script type="text/babel">
       class LikeButton extends React.Component {
         constructor(props) {
           super(props);
@@ -30,23 +29,22 @@
         }
 
         render() {
-          return e(
-            "button",
-            {
-              onClick: () => {
-                this.setState({ licked: true });
-                // console.log(this.state.licked);
-              },
-              type: "submit",
-            },
-            this.state.licked === true ? "Liked" : "Like"
-          ); // <button> Like </button> '이런 태그를 만들겠다(만든다가 아님)'
-          // <div id="root"><button onclick="() => { console.log("clicked"); }" type="submit">Like</button></div>
+          return (
+            // JSX (JS + XML)
+            <button
+              type="submit"
+              onClick={() => {
+                this.setState({ liked: true });
+              }}
+            >
+              {this.state.liked ? "Liked" : "Like"}
+            </button>
+          );
         }
       }
     </script>
-    <script>
-      ReactDOM.render(e(LikeButton), document.querySelector("#root"));
+    <script type="text/babel">
+      ReactDOM.render(<LikeButton />, document.querySelector("#root"));
     </script>
   </body>
 </html>
@@ -54,3 +52,19 @@
 <!-- { onClick: () => this.setState({ liked: true }) } -->
 <!--Web 보다는 App의 형식과 비슷하다고 보면 된다-->
 <!--! SPA 그리고 SSR과 CSR: https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR -->
+<!--
+  const e = React.createElement;
+
+  // return e(
+          //   "button",
+          //   {
+          //     onClick: () => {
+          //       this.setState({ licked: true });
+          //       // console.log(this.state.licked);
+          //     },
+          //     type: "submit",
+          //   },
+          //   this.state.licked === true ? "Liked" : "Like"
+          // ); // <button> Like </button> '이런 태그를 만들겠다(만든다가 아님)'
+          // <div id="root"><button onclick="() => { console.log("clicked"); }" type="submit">Like</button></div>
+-->

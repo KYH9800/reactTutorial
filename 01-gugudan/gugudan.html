@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>구구단</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class GuGuDan extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: "",
+            result: "",
+          };
+        }
+
+        // 클래스 안애 매서드로 만들수 있다. (html과 js를 가급적 같이 쓰지 않는것이 좋다)
+        onSubmit = (e) => {
+          e.preventDefault();
+          let value = e.target[0].value;
+          console.log(value);
+          if (parseInt(value) === this.state.first * this.state.second) {
+            this.setState({
+              result: `${value} 정답!`,
+              first: Math.ceil(Math.random() * 9),
+              second: Math.ceil(Math.random() * 9),
+              value: "",
+            });
+          } else {
+            this.setState({
+              result: `${value} 땡!!`,
+              value: "",
+            });
+          }
+        };
+
+        onChange = (e) => {
+          this.setState({ value: e.target.value });
+        };
+
+        render() {
+          return (
+            // <></> 이건 babel2에서 지원한다. 지원하지 않는다면 <React.Fragment></React.Fragment> 빈태그 추가
+            <React.Fragment>
+              <div>
+                {this.state.first} X {this.state.second} = ?
+              </div>
+              <form onSubmit={this.onSubmit}>
+                <input
+                  type="number"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                />
+                <button>입력</button>
+              </form>
+              <div>{this.state.result}</div>
+            </React.Fragment>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
