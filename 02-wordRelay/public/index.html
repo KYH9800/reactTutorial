@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>끝말잊기</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--! src는 딱 하나만 넣어줄수 있다. 그래서 webpack을 통해 하나로 합쳐 하나의 js파일로 만들어 주는 것이다. -->
+    <script src="../dist/app.js">
+      // todo
+    </script>
+  </body>
+</html>
+<!--
+*  <create react app의 원리>
+*  1). (terminal) in this file >> package.json, package-lock.json
+*  node install
+*  npm init (package.json 생성)
+*  실제 사용 시 웹팩 필요없음 개발 시에만 필요함 --save-dev는 개발 시에만 사용하겠다는 뜻
+*  npm install -D(--save-dev) webpack webpack-cli
+*
+*  package.json에서
+*  - dependencies(user가 사용시 쓰일 것)에서 react와 react-dom이 설치된 것을 확인 가능
+*  - devDependencies(개발 시에만 사용하겠다)에서 webpack과 webpack-cli가 설치된 것을 확인 가능
+*
+*  2). 해당 폴더에 webpack.config.js와 client.jsx 파일 2개를 생성
+*
+*  3). 이제 html <head> 태그에 <script>태그로 불러왔던 react와 react-dom은 필요가 없다
+*    <body> 태그에 작성될 <script> 태그에서 src를 통해 ./dist/app.js를 불러온다
+
+*  4). npm install -D babel-loader @babel/core @babel/preset-env @babel/preset-react
+* - babel-loader: 연결에 도움을 준다
+* - @babel/core: babel의 기초(기본) core
+* - @babel/preset-env: 알아서 환경에 맞게 브라우저 구,신 버전에 맞춰준다
+* - @babel/preset-react: jsx를 쓸 수 있게 도와준다
+-->
