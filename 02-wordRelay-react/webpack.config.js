@@ -49,4 +49,9 @@ module.exports = {
     filename: "app.js", // 우리가 원하는 파일
     publicPath: "/dist/",
   }, // 출력
+
+  // reload with keep up Data
+  devServer: {
+    hot: true,
+  },
 };
