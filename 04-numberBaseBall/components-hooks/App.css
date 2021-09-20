@@ -19,3 +19,6 @@ main {
   padding-left: 130px;
   padding-right: 130px;
 }
+ul {
+  list-style: none;
+}
