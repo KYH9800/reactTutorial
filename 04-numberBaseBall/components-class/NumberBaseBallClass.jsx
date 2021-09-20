@@ -25,6 +25,9 @@ class NumberBaseBallClass extends Component {
     tries: [], // do not using 'push'
   };
 
+  // PureComponent
+  // shouldComponentUpdate(nexProps, nextState) {}
+
   onSubmitForm = (e) => {
     const { value, tries, answer } = this.state;
     e.preventDefault();
