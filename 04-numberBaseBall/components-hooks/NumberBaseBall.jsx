@@ -28,13 +28,7 @@ const NumberBaseBall = () => {
     (e) => {
       e.preventDefault();
       if (value === answer.join("")) {
-        setTries((t) => [
-          ...t,
-          {
-            try: value,
-            result: "홈런입니다",
-          },
-        ]);
+        setTries((prevTries) => [...prevTries, { try: value, result: "홈런입니다" }]);
         setResult("홈런입니다");
         setTimeout(() => {
           alert("게임을 새로 시작합니다.");
@@ -67,7 +61,7 @@ const NumberBaseBall = () => {
               ball += 1;
             }
           }
-          setTries((t) => [...t, { try: value, result: `${strike} 스트라이크 ${ball} 볼입니다.` }]);
+          setTries((prevTries) => [...prevTries, { try: value, result: `${strike} 스트라이크 ${ball} 볼입니다.` }]);
           setValue("");
           inputEl.current.focus();
         }
