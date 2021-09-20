@@ -4,7 +4,7 @@
 !lib.a
 
 # only ignore the TODO file in the current directory, not subdir/TODO
-/TODO
+.DS_Store
 
 # ignore all files in the build/ directory
 build/
