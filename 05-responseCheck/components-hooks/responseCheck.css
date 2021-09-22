@@ -1,24 +1,28 @@
+body {
+  text-align: center;
+}
 header {
-  text-align: center;
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  background-color: rgb(68, 65, 65);
 }
-
-main {
-  text-align: center;
+#screen {
+  font-size: 20px;
+  margin: auto;
+  width: 500px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  user-select: none;
 }
-
-.hint {
-  display: flex;
+#screen.waiting {
+  background-color: aqua;
+  color: rgb(28, 30, 202);
 }
-
-#record {
-  padding-left: 50px;
-  padding-right: 55px;
+#screen.ready {
+  background-color: red;
+  color: white;
 }
-
-#log {
-  padding-left: 130px;
-  padding-right: 130px;
-}
-ul {
-  list-style: none;
+#screen.now {
+  background-color: greenyellow;
 }
