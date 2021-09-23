@@ -26,3 +26,19 @@ header {
 #screen.now {
   background-color: greenyellow;
 }
+#screen.warning {
+  background-color: rgb(219, 128, 54);
+}
+#block {
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border: 1px solid black;
+}
+#record {
+  margin: 5px;
+}
+ul {
+  list-style: none;
+  text-align: left;
+}
