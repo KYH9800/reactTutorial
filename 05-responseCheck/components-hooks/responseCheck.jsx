@@ -1,5 +1,5 @@
 import "./ResponseCheck.css";
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Record from "./Record";
 
 const ResponseCheck = () => {
@@ -7,12 +7,12 @@ const ResponseCheck = () => {
   const [message, setMessage] = useState("클릭해서 시작하세요");
   const [result, setResult] = useState([]);
 
-  const resetMessage = useRef(null);
+  let resetMessage = useRef(null);
   const timeout = useRef(null);
   const startTime = useRef(0);
   const endTime = useRef(0);
 
-  const onClickScreen = () => {
+  const onClickScreen = useCallback(() => {
     if (state === "waiting") {
       clearTimeout(resetMessage);
       timeout.current = setTimeout(() => {
@@ -37,11 +37,11 @@ const ResponseCheck = () => {
         return [...prevResult, endTime.current - startTime.current];
       });
     }
-  };
+  }, [state]);
 
-  const onReset = () => {
+  const onReset = useCallback(() => {
     setResult([]);
-  };
+  }, []);
 
   const renderAverage = () => {
     console.log("시간기록: ", result);
