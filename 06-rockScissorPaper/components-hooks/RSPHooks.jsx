@@ -34,7 +34,8 @@ const RSP = () => {
       // console.log("종료"); // componentWillUnmount()
       clearInterval(interval.current);
     };
-  }, [imgCoord]); // 초기에는 빈배열을 넣어준다.
+  }, [imgCoord]); //* 초기에는 빈배열을 넣어준다. (바뀌는 state, useEffect를 실행하고 싶은 state를 여기에)
+  //! closure 문제를 여기에서 해결 가능하다
 
   const changeHand = () => {
     if (imgCoord === rspCoords.rock) {
