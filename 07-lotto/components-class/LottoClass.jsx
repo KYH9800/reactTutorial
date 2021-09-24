@@ -1,4 +1,5 @@
 //* lotto 예제가 지금껏 배웠던 것의 종합이다
+//! 하위 component에 props, state 전달
 //! LifeCycle(생명주기)
 //! render 안의 반복문과 조건문(&&, 삼항연산자)
 //! 배열을 복사 후 삽입
