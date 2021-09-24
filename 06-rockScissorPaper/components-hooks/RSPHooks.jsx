@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import "./RSPHooks.css";
 //! hooks는 lifecycle이 없지만 흉내는 낼 수 있다
 // 좌표
@@ -34,8 +34,10 @@ const RSP = () => {
       // console.log("종료"); // componentWillUnmount()
       clearInterval(interval.current);
     };
-  }, [imgCoord]); //* 초기에는 빈배열을 넣어준다. (바뀌는 state, useEffect를 실행하고 싶은 state를 여기에)
-  //! closure 문제를 여기에서 해결 가능하다
+  }, [imgCoord]); //* 초기에는 빈배열을 넣어준다. (배열에는 꼭 useEffect를 다시 실행할 값만 넣어준다)
+  //! closure 문제를 여기에서 해결 가능하다, 넣어준 state가 바뀔떄마다 실행해준다
+  // [] 빈배열을 빼니 componentDidUpdate 같다
+  // [] 빈배열은 에러, closure 문제
 
   const changeHand = () => {
     if (imgCoord === rspCoords.rock) {
