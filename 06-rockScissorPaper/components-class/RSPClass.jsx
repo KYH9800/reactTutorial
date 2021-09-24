@@ -72,6 +72,7 @@ class RSP extends Component {
     }
   };
 
+  // 고차함수 적용(high oder function) onClick={() => this.onClickButton(value)}
   onClickButton = (choice) => () => {
     const { imgCoord } = this.state;
     clearInterval(this.interval);
