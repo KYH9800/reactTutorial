@@ -1,3 +1,8 @@
+//* lotto 예제가 지금껏 배웠던 것의 종합이다
+//! LifeCycle(생명주기)
+//! render 안의 반복문과 조건문(&&, 삼항연산자)
+//! 배열을 복사 후 삽입
+
 import React, { Component } from "react";
 import BallClass from "./BallClass";
 
@@ -42,7 +47,7 @@ class LottoClass extends Component {
         bonus: winNumbers[6],
         redo: true,
       });
-    }, 8000);
+    }, 7500);
   };
 
   componentDidMount() {
