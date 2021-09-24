@@ -26,14 +26,15 @@ const RSP = () => {
   const [score, setScore] = useState(0);
   const interval = useRef();
 
+  // componentDidMount, componentWillUnmount 역할(1대 1 대응은 아님)
   useEffect(() => {
-    // console.log("다시 실행"); componentDidMount()
+    // console.log("다시 실행"); // componentDidMount()
     interval.current = setInterval(changeHand, 100);
     return () => {
-      // console.log("종료"); componentWillUnmount()
+      // console.log("종료"); // componentWillUnmount()
       clearInterval(interval.current);
     };
-  }, [imgCoord]);
+  }, [imgCoord]); // 초기에는 빈배열을 넣어준다.
 
   const changeHand = () => {
     if (imgCoord === rspCoords.rock) {
