@@ -4,7 +4,7 @@ const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 // proccess.env.NODE_ENV = "production"; // 배포모드 설정
 
 module.exports = {
-  name: "nuberBaseBall-setting",
+  name: "ticTacToe-setting",
   mode: "development", // production
   devtool: "eval",
   resolve: {
