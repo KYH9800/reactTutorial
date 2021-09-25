@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-import "./BallHooks";
-// 함수형 컴포넌트 PureComponent >> useMemo, memo
+import "./BallHooks.css";
+// 함수형 컴포넌트 PureComponent >> memo
 // high order component
 const BallHooks = memo(({ number }) => {
   let background;
