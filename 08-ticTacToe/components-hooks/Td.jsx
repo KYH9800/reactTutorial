@@ -7,7 +7,7 @@ const Td = memo(({ rowIndex, cellIndex, cellData, dispatch }) => {
 
   const onClickTd = useCallback(() => {
     if (cellData) {
-      return;
+      return; // 이미 클릭을 했다면, 클릭할 수 없음
     }
     dispatch({ type: CLICK_CELL, row: rowIndex, cell: cellIndex });
   }, [cellData]);
