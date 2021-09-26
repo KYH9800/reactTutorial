@@ -57,6 +57,7 @@ const reducer = (state, action) => {
           ["", "", ""],
         ],
         recentCell: [-1, -1],
+        winner: "",
       };
     }
     default:
@@ -105,22 +106,27 @@ const TicTacToeHooks = () => {
     if (win) {
       // 승리시
       dispatch({ type: SET_WINNER, winner: turn });
-      dispatch({ type: RESET_GAME });
+      setTimeout(() => {
+        dispatch({ type: RESET_GAME }); // 잠시 후 게임을 리셋
+      }, 1500);
     } else {
       let all = true; // all이 true면 무승부라는 뜻
+      // 무승부 검사
       tableData.forEach((row) => {
-        // 무승부 검사
         row.forEach((cell) => {
           if (!cell) {
-            all = false;
+            all = false; // 하나라도 차지 않은 칸이 있으면 무승부가 아님
           }
         });
       });
+      // all이 true면 무승부
       if (all) {
-        dispatch({ type: SET_WINNER, winner: null });
-        dispatch({ type: RESET_GAME });
+        dispatch({ type: SET_WINNER, winner: "무승부 입니다" }); // winner 비우고
+        setTimeout(() => {
+          dispatch({ type: RESET_GAME }); // 잠시 후 게임을 리셋
+        }, 1500);
       } else {
-        dispatch({ type: CHANGE_TURN });
+        dispatch({ type: CHANGE_TURN }); // 그 외에는 user의 순서를 바꾼다
       }
     }
   }, [recentCell]); // componentDidMount, componentDidUpdate
@@ -128,7 +134,7 @@ const TicTacToeHooks = () => {
   return (
     <>
       <Table onClick={onClickTable} tableData={tableData} dispatch={dispatch} />
-      {winner && <div>{winner}님의 승리!!</div>}
+      {winner === "O" || winner === "X" ? <div>{`${winner}님의 승리!!`}</div> : <div>{winner}</div>}
     </>
   );
 };
