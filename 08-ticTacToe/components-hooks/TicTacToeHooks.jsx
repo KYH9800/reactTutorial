@@ -84,21 +84,22 @@ const TicTacToeHooks = () => {
   useEffect(() => {
     // componentDidMount
     const [row, cell] = recentCell;
+    // row가 -1이면 실행되지 않는다, 첫 컴포넌트 렌더링 시 실행되기 때문에 초기값 -1을 주고, 처음부터 승패를 판단하는 동작을 막는다
     if (row < 0) {
       return;
     }
     let win = false;
     if (tableData[row][0] === turn && tableData[row][1] === turn && tableData[row][2] === turn) {
-      win = true;
+      win = true; // 가로줄 검사
     }
     if (tableData[0][cell] === turn && tableData[1][cell] === turn && tableData[2][cell] === turn) {
-      win = true;
+      win = true; // 세로줄 검사
     }
     if (tableData[0][0] === turn && tableData[1][1] === turn && tableData[2][2] === turn) {
-      win = true;
+      win = true; // 왼쪽(상단) - 오른쪽(하단) 대각선 검사
     }
     if (tableData[0][2] === turn && tableData[1][1] === turn && tableData[2][0] === turn) {
-      win = true;
+      win = true; // 오른쪽(상단) - 왼쪽(하단) 대각선 검사
     }
     console.log(win, row, cell, tableData, turn);
     if (win) {
