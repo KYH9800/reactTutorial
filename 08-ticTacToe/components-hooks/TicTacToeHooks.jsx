@@ -20,6 +20,7 @@ export const RESET_GAME = "RESET_GAME";
 // 3. reducer는 함수 (배열의 reduce 함수처럼 무언가를 줄인다 그런 뜻)
 // reducer 안에서 state를 어떻게 바꿀지를 적어준다
 const reducer = (state, action) => {
+  //! state를 바꿀 떄는 불변성이 중요하다 (...state)
   switch (action.type) {
     case "SET_WINNER":
       // state.winner = action.winner; 이렇게 하면 안됨
