@@ -254,8 +254,8 @@ const MineSearch = () => {
     }),
     [tableData, halted]
   ); // cashing
-  // useMemo를 통해 캐싱을 해주고 객체 값을 기억한다. 캐싱을해야 성능저하가 일어나지 않는다
-
+  //! value가 변할 때마다 리렌더링이 되기 때문에 useMemo를 통해 value 값을 기억한다(최적화)
+  // useMemo: 캐싱을 한다, 메모리에 기억해 놓고 가져다가 사용한다 (캐싱: 컴퓨터의 성능을 향상시기기 위해 사용되는 메모리)
   useEffect(() => {
     // componentDidMount()
     let timer;

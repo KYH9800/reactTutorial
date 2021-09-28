@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext } from "react";
+import React, { memo, useCallback, useContext, useMemo } from "react";
 import { CLICK_MINE, CODE, FLAG_CELL, NORMALIZE_CELL, OPEN_CELL, QUESTION_CELL, TableContext } from "./MineSearch";
 
 const getTdStyle = (code) => {
@@ -100,14 +100,30 @@ const Td = memo(({ rowIndex, cellIndex }) => {
     },
     [tableData[rowIndex][cellIndex], halted]
   );
+  // console.log("tr rendered");
+  return <RealTd onClickTd={onClickTd} onRightClickTd={onRightClickTd} data={tableData[rowIndex][cellIndex]} />;
+});
 
+// 2. component를 분리하여 React.memo로 최적화 하는 방법
+const RealTd = memo(({ onClickTd, onRightClickTd, data }) => {
+  console.log("real td rendered");
   return (
     <>
-      <td style={getTdStyle(tableData[rowIndex][cellIndex])} onClick={onClickTd} onContextMenu={onRightClickTd}>
-        {getTdText(tableData[rowIndex][cellIndex])}
+      <td style={getTdStyle(data)} onClick={onClickTd} onContextMenu={onRightClickTd}>
+        {getTdText(data)}
       </td>
     </>
   );
 });
 
 export default Td;
+
+/* 1. return한 값을 useMemo를 통한 최적화 방법
+return useMemo( () => (
+  <>
+    <td style={getTdStyle(tableData[rowIndex][cellIndex])} onClick={onClickTd} onContextMenu={onRightClickTd}>
+      {getTdText(tableData[rowIndex][cellIndex])}
+    </td>
+  </>
+), [tableData[rowIndex][cellIndex]]);
+*/
