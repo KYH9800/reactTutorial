@@ -151,9 +151,10 @@ const reducer = (state, action) => {
           }
         }
         //! 버그: 눌리지 않은 칸이 있을때, 승리라고 뜸 (버그해결)
+        // 내 칸이 닫힌 칸이면 카운트 증가
         if (tableData[row][cell] === CODE.NORMAL) {
           openedCount += 1; // 칸들 하나 열떄마다 openedCount 1씩 올려주기
-        } // 내 칸이 닫힌 칸이면
+        }
         tableData[row][cell] = count; // default of function getTdText in <Td/> component
       };
       checkAround(action.row, action.cell);
