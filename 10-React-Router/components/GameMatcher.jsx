@@ -8,7 +8,8 @@ import LottoClass from "../../07-lotto/components-class/LottoClass";
 export default class GameMatcher extends Component {
   render() {
     console.log("history: ", this.props.history, "location: ", this.props.location, "match: ", this.props.match);
-    console.log("location.search: ", this.props.location.search);
+    let urlSearchParams = new URLSearchParams(this.props.location.search.slice(1));
+    console.log("get: ", urlSearchParams.get("query"));
     const { match } = this.props;
     if (match.params.name === "끝말잇기") {
       return <WordPlay />;
