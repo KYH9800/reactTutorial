@@ -36,7 +36,7 @@ module.exports = {
             ],
             "@babel/preset-react",
           ],
-          plugins: ["@babel/plugin-proposal-class-properties", "react-refresh/babel"],
+          plugins: ["@babel/plugin-proposal-class-properties", "react-refresh/babel", "@babel/plugin-proposal-class-properties"],
         },
       },
     ],
@@ -50,6 +50,8 @@ module.exports = {
   },
 
   devServer: {
+    historyApiFallback: true, // router 새로고침시 에러를 꼼수처럼 해결
+    publicPath: "/dist/",
     hot: true,
   },
 };

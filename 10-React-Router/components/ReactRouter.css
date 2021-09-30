@@ -1,0 +1,24 @@
+.var {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: rgb(101, 134, 184);
+}
+
+.main {
+  margin-top: 20px;
+}
+
+a {
+  margin: 5px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-decoration-line: none;
+}
+a:hover {
+  background-color: royalblue;
+}
+a:active {
+  background-color: rgb(120, 144, 216);
+}
